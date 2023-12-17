@@ -5,6 +5,7 @@ import shlex
 import shutil
 import sys
 import datetime
+import shutil
 
 from invoke import task
 from invoke.main import program
@@ -32,6 +33,10 @@ CONFIG = {
     'host': 'localhost',
     'port': 8000,
 }
+
+
+def move_cname():
+    shutil.copy('./CNAME', './output/CNAME')
 
 @task
 def clean(c):
@@ -85,6 +90,7 @@ def reserve(c):
 def preview(c):
     """Build production version of site"""
     pelican_run('-s {settings_publish}'.format(**CONFIG))
+    move_cname()
 
 @task
 def livereload(c):
