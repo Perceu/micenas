@@ -1,3 +1,7 @@
 .text-justify {
     text-align: justify;
 }
+
+.hero-copy {
+    width: auto!important;
+}
